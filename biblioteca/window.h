@@ -5,8 +5,9 @@
 #include <windows.h>  
 #include "console_v1.5.3.h"
 
-void get_screen(COORD *size);
+void get_screen(COORD *orig_window);
 void start_window();
 void end_window(COORD size);
 
 #endif
+

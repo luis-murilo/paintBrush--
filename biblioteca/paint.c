@@ -10,43 +10,21 @@ void check_name(char *argv[], int argc)
 	}
 }
 
-void start(char *argv[], int argc) /*Inicia o programa*/
+void starts(char *argv[], int argc, COORD *orig_window) /*Inicia o programa*/
 {
-	COORD size, initial, final;
 	clrscr();
 	check_name(argv, argc);
-	setCursorStatus(DESLIGAR);
-    get_screen(&size);
-	setTituloConsole("pbrush++");
-	setEstadoBarraTarefas(INVISIVEL);
+    get_screen(orig_window);
 	start_window();
-	rect(initial, final, RGB(255,255,255));
-	system("pause");
+	top_bar();
+	lower_bar();
+	work_area();
 }
 
-void end(COORD size) /*Encerra o programa*/
+void end(COORD orig_window) /*Encerra o programa*/
 {
 	setCursorStatus(LIGAR);
-	end_window(size);
-	textbackground(BLACK);
+	end_window(orig_window);
 	setEstadoBarraTarefas(VISIVEL);
 }
 
-void rect(COORD initial, COORD final, COLORREF cor)
-{
-	HWND hWnd;	/* handle Window */
-	HDC hDC;	/* handle Device Context */
-	RECT rect;
-	HBRUSH brush;
-	hWnd = GetConsoleWindow(); 	/* armazenar o controlador da janela do prompt de comando */
-	hDC = GetDC(hWnd);	/* armazenar o controlador da área de desenho na janela do prompt de comando */
-	
-	brush = CreateSolidBrush(cor);
-	rect.left = 0;
-	rect.top = 0;
-	rect.right = 100;
-	rect.bottom = 100;
-    
-	FillRect(hDC, &rect, brush);	/* Plotar o pixel na posição do retângulo com a cor "cor" */
-	ReleaseDC(hWnd, hDC);	/* liberar o controlador da área gráfica */
-}
