@@ -21,7 +21,6 @@ void start(char *argv[], int argc) /*Inicia o programa*/
 	setEstadoBarraTarefas(INVISIVEL);
 	start_window();
 	rect(initial, final, RGB(255,255,255));
-	end(size);
 	system("pause");
 }
 
