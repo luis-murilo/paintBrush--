@@ -38,12 +38,12 @@ void top_bar()	/*Desenha a barra superior e sua borda*/
 	initial.X = 0;
 	initial.Y = 0;
 	final.Y = (final.Y) / 8;
-	cor = RGB(206, 240, 198);
+	cor = RGB(198, 206, 240);
 	rect(initial, final, cor);
 	/*Desenha borda da barra superior*/
 	initial.Y = final.Y;
 	final.Y = (final.Y) + 2;
-	cor = RGB(3, 128, 128);
+	cor = RGB(94, 117, 213);
 	rect(initial, final, cor);
 }
 
@@ -53,12 +53,12 @@ void lower_bar()	/*Desenha a barra inferior e sua borda*/
 	COLORREF cor;
 	final = pixels_janela();	/*Dimensão da janela de console atual em pixels*/
 	/*Desenha a barra inferior*/
-	cor = RGB(206, 240, 198);
+	cor = RGB(210, 215, 245);
 	initial.X = 0;
 	initial.Y = (final.Y) - 30;
 	rect(initial, final, cor);
 	/*Desenha a borda inferior*/
-	cor = RGB(3, 128, 128);
+	cor = RGB(150, 150, 255);
 	initial.Y = (final.Y) - 32;
 	final.Y = (final.Y) - 30;
 	rect(initial, final, cor);	

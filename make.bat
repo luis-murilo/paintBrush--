@@ -14,3 +14,5 @@ ar rvs libpaint.a console_v1.5.3.o graphics.o conio_v3.2.1.o paint.o window.o in
 cd ..
 
 gcc -o pbrush++ pbrush++.c -I.\biblioteca -L.\biblioteca -lpaint -lgdi32 -Wall -pedantic
+
+@echo on
