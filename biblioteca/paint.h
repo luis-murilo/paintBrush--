@@ -9,6 +9,7 @@
 #include "console_v1.5.3.h"
 #include "window.h"
 #include "interface.h"
+#include "info_lower_bar.h"
 
 void check_name(char *argv[], int argc);
 void starts(char *argv[], int argc, COORD *orig_window);

@@ -1,6 +1,5 @@
 #include "paint.h"
 #include "window.h"
-#include "interface.h"
 
 int main(int argc, char *argv[])
 {

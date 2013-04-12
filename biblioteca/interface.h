@@ -9,8 +9,6 @@
 #include <windows.h>
 #include "console_v1.5.3.h"
 
-#include <stdio.h>
-
 void rect(COORD initial, COORD final, COLORREF cor);
 COORD pixels_janela();
 void top_bar();
