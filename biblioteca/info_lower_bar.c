@@ -1,3 +1,7 @@
 #include "info_lower_bar.h"
 
-void 
+void location_pointer(COORD loc_point)
+{
+
+}
+
