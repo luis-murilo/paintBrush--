@@ -62,14 +62,14 @@ typedef enum {
    WHITE
 } COLORS;
 
-enum text_modes {  
+enum text_modes {
    LASTMODE=-1,
    BW40=0,
    C40,
    BW80,
    C80,
    MONO=7,
-   C4350=64 
+   C4350=64
 };
 
 #define _NOCURSOR      0
@@ -85,8 +85,8 @@ void clrscr(void);
 int cprintf(const char *format, ...);
 int cputs(const char *str);
 void delline(void);
-int getch(void);  
-int getche(void); 
+int getch(void);
+int getche(void);
 char *getpass(const char *prompt);
 int _gettext(int left, int top, int right, int bottom, void *destin);
 void gettextinfo(struct text_info *r);
@@ -105,7 +105,7 @@ void normvideo(void);
 /*outport*/
 /*outportb*/
 /*outpw*/
-int putch(int c); 
+int putch(int c);
 int puttext(int left, int top, int right, int bottom, void *source);
 void _setcursortype(int cur_t);
 void textattr(int newattr);

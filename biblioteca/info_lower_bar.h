@@ -2,10 +2,9 @@
 #define INFO_LOWER_BAR_H
 
 #include <windows.h>
-#include "conio_v3.2.1.h"
+#include "conio_v3.2.3.h"
 
-void gotoxy_correct(int x, int y, COORD *size);
-void info_lower(COORD *size, COORD *pencil_pos, int pencil_size, int mode);
+void info_lower(COORD *size, COORD *pencil_pos, COORD *initial, int pencil_size, int mode);
 
 #endif
 

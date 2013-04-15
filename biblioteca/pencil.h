@@ -8,3 +8,4 @@
 void pos_pencil(COORD *pencil_pos, COORD *initial, COORD *final, int key);
 
 #endif
+

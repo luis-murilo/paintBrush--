@@ -1,6 +1,7 @@
 #include "paint.h"
 #include "window.h"
 #include "pencil.h"
+#include "draw.h"
 #include <windows.h>
 
 int main(int argc, char *argv[])
@@ -13,11 +14,14 @@ int main(int argc, char *argv[])
 	{
 		key.teclado.codigo_tecla = 0;
 		key = Evento();
-		if((key.teclado.codigo_tecla > 36) || (key.teclado.codigo_tecla < 41))
+		if((key.teclado.codigo_tecla > 36) && (key.teclado.codigo_tecla < 41))
 		{
-			pos_pencil(&pencil_pos, &initial, &final, key.teclado.codigo_tecla);
-			printf("%lu", key.teclado.codigo_tecla);
-			info_lower(&size, &pencil_pos, pencil_size, mode);
+			seta(&pencil_pos, &initial, &final, key.teclado.codigo_tecla, &size, mode, pencil_size);
+		}
+		if(key.teclado.codigo_tecla == 17)
+		{
+			printf("entro");
+			mode_status(&mode);
 		}
 	}while(key.teclado.codigo_tecla != ESC);
 	end(orig_window);
