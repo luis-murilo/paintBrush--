@@ -10,9 +10,11 @@
 #include "window.h"
 #include "interface.h"
 #include "info_lower_bar.h"
+#include "pencil.h"
 
 void check_name(char *argv[], int argc);
-void starts(char *argv[], int argc, COORD *orig_window);
+void area_reserv(COORD janela_pixels, COORD *initial, COORD *final);
+void starts(char *argv[], int argc, COORD *orig_window, COORD *initial, COORD *final, COORD *pencil_pos, int pencil_size, int mode, COORD *size);
 void end(COORD orig_window);
 
 #endif

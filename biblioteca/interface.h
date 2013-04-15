@@ -9,11 +9,11 @@
 #include <windows.h>
 #include "console_v1.5.3.h"
 
-void rect(COORD initial, COORD final, COLORREF cor);
+void rect(COORD *initial, COORD *final, COLORREF cor);
 COORD pixels_janela();
-void top_bar();
-void lower_bar();
-void work_area();
+void top_bar(COORD janela_pixels);
+void lower_bar(COORD janela_pixels);
+void work_area(COORD janela_pixels, COORD *initial, COORD *final);
 
 #endif
 

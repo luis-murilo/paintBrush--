@@ -391,9 +391,6 @@ int hit(TYPE_HIT tipoEvento)
    return existeEvento;
 }
 
-
-/*
-*/
 /* Função que aguarda e retorna um evento originado, ou do teclado, ou do mouse */
 EVENTO Evento(void)
 {

@@ -365,7 +365,6 @@ void gettextinfo(struct text_info *r)
 void gotoxy(int x, int y)
 {
    COORD c;
-
    if(x < 1 || x > vActual.screenwidth || 
       y < 1 || y > vActual.screenheight) return;
    vActual.curx = x;
