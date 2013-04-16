@@ -72,5 +72,7 @@ void work_area(COORD janela_pixels, COORD *initial, COORD *final)	/*Desenha áre
 	final->X = janela_pixels.X;
 	final->Y = (janela_pixels.Y) - 32;
 	rect(initial, final, cor);
+	final->X = janela_pixels.X - 1;
+	final->Y = (janela_pixels.Y) - 33;
 }
 

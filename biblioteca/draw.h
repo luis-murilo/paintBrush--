@@ -3,7 +3,7 @@
 
 #include "graphics.h"
 
-void pintar(COORD *pencil_pos, int mode, COLORREF cor);
+void pintar(COORD *pencil_pos, int *mode, COLORREF cor);
 
 #endif
 

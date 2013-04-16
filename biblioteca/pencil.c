@@ -28,4 +28,23 @@ void pos_pencil(COORD *pencil_pos, COORD *initial, COORD *final, int key)	/*Atua
 	}
 }
 
+void resize_pencil(int *pencil_size, int state, COORD *size, COORD *pencil_pos, COORD *initial, int *mode)
+{
+	if(state == 1)
+	{
+		++(*pencil_size);
+	}
+	else
+	{
+		--(*pencil_size);
+	}
+	info_lower(size, pencil_pos, initial, pencil_size, mode);
+}
+
+void seta(COORD *pencil_pos, COORD *initial, COORD *final, int key, COORD *size, int *mode, int *pencil_size)
+{
+	pos_pencil(pencil_pos, initial, final, key);
+	pintar(pencil_pos, mode, RGB(0,0,0));
+	info_lower(size, pencil_pos, initial, pencil_size, mode);
+}
 

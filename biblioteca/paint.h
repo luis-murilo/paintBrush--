@@ -15,10 +15,9 @@
 
 void check_name(char *argv[], int argc);
 void area_reserv(COORD janela_pixels, COORD *initial, COORD *final);
-void starts(char *argv[], int argc, COORD *orig_window, COORD *initial, COORD *final, COORD *pencil_pos, int pencil_size, int mode, COORD *size);
+void starts(char *argv[], int argc, COORD *orig_window, COORD *initial, COORD *final, COORD *pencil_pos, int *pencil_size, int *mode, COORD *size);
 void end(COORD orig_window);
-void seta(COORD *pencil_pos, COORD *initial, COORD *final, int key, COORD *size, int mode, int pencil_size);
-void mode_status(int *mode);
+void mode_status(COORD *size, COORD *pencil_pos, COORD *initial, int *pencil_size, int *mode);
 
 #endif
 

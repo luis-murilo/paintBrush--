@@ -17,7 +17,7 @@ void area_reserv(COORD janela_pixels, COORD *initial, COORD *final)	/*Desenha á
 	work_area(janela_pixels, initial, final);
 }
 
-void starts(char *argv[], int argc, COORD *orig_window, COORD *initial, COORD *final, COORD *pencil_pos, int pencil_size, int mode, COORD *size) /*Inicia o programa*/
+void starts(char *argv[], int argc, COORD *orig_window, COORD *initial, COORD *final, COORD *pencil_pos, int *pencil_size, int *mode, COORD *size) /*Inicia o programa*/
 {
 	COORD janela_pixels;
 	check_name(argv, argc);
@@ -41,22 +41,16 @@ void end(COORD orig_window) /*Encerra o programa*/
 	clrscr();
 }
 
-void seta(COORD *pencil_pos, COORD *initial, COORD *final, int key, COORD *size, int mode, int pencil_size)
-{
-	pos_pencil(pencil_pos, initial, final, key);
-	pintar(pencil_pos, mode, RGB(0,0,0));
-	info_lower(size, pencil_pos, initial, pencil_size, mode);
-}
-
-void mode_status(int *mode)
+void mode_status(COORD *size, COORD *pencil_pos, COORD *initial, int *pencil_size, int *mode)
 {
 	if(*mode == 1)
 	{
 		*mode = 0;
 	}
-	if(*mode == 0)
+	else
 	{
 		*mode = 1;
 	}
+	info_lower(size, pencil_pos, initial, pencil_size, mode);
 }
 
