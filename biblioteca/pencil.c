@@ -1,6 +1,6 @@
 #include "pencil.h"
 
-void pos_pencil(COORD *pencil_pos, COORD *initial, COORD *final, int key)	/*Atualiza posicao do pincel*/
+void pos_pencil(COORD *pencil_pos, COORD *initial, COORD *final, int key, int *pencil_size)	/*Atualiza posicao do pincel*/
 {
 	if(key == 0)	/*Inicializa as coordenadas do pincel*/
 	{
@@ -9,21 +9,21 @@ void pos_pencil(COORD *pencil_pos, COORD *initial, COORD *final, int key)	/*Atua
 	}
 	else
 	{
-		if((key == SETA_PARA_ESQUERDA) && (pencil_pos->X > initial->X))
+		if((key == SETA_PARA_ESQUERDA) && ((pencil_pos->X - *pencil_size + 1) > initial->X))
 		{
-			--pencil_pos->X;
+			pencil_pos->X -= (*pencil_size);
 		}
-		if((key == SETA_PARA_DIREITA) && (pencil_pos->X < final->X))
+		if((key == SETA_PARA_DIREITA) && ((pencil_pos->X + *pencil_size - 2) < (final->X - *pencil_size)))
 		{
-			++pencil_pos->X;
+			pencil_pos->X += (*pencil_size);
 		}
-		if((key == SETA_PARA_CIMA) && (pencil_pos->Y > initial->Y))
+		if((key == SETA_PARA_CIMA) && ((pencil_pos->Y - *pencil_size + 1) > initial->Y))
 		{
-			--pencil_pos->Y;
+			pencil_pos->Y -= (*pencil_size);
 		}
-		if((key == SETA_PARA_BAIXO) && (pencil_pos->Y < final->Y))
+		if((key == SETA_PARA_BAIXO) && (pencil_pos->Y + *pencil_size - 2 < (final->Y - *pencil_size)))
 		{
-			++pencil_pos->Y;
+			pencil_pos->Y += (*pencil_size);
 		}
 	}
 }
@@ -34,17 +34,18 @@ void resize_pencil(int *pencil_size, int state, COORD *size, COORD *pencil_pos, 
 	{
 		++(*pencil_size);
 	}
-	else
+	if((state == 0) && (*pencil_size) > 1)
 	{
 		--(*pencil_size);
 	}
 	info_lower(size, pencil_pos, initial, pencil_size, mode);
 }
 
-void seta(COORD *pencil_pos, COORD *initial, COORD *final, int key, COORD *size, int *mode, int *pencil_size)
+void seta(COORD *pencil_pos, COORD *initial, COORD *final, int key, COORD *size, int *mode, int *pencil_size, PIXEL **pixels)
 {
-	pos_pencil(pencil_pos, initial, final, key);
-	pintar(pencil_pos, mode, RGB(0,0,0));
+	pintar(pixels, pencil_pos, mode, RGB(0,0,0), key, pencil_size);
+	pos_pencil(pencil_pos, initial, final, key, pencil_size);
+	pintar(pixels, pencil_pos, mode, RGB(0,0,0), key, pencil_size);
 	info_lower(size, pencil_pos, initial, pencil_size, mode);
 }
 

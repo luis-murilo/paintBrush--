@@ -17,7 +17,7 @@ void area_reserv(COORD janela_pixels, COORD *initial, COORD *final)	/*Desenha á
 	work_area(janela_pixels, initial, final);
 }
 
-void starts(char *argv[], int argc, COORD *orig_window, COORD *initial, COORD *final, COORD *pencil_pos, int *pencil_size, int *mode, COORD *size) /*Inicia o programa*/
+void starts(char *argv[], int argc, COORD *orig_window, COORD *initial, COORD *final, COORD *pencil_pos, int *pencil_size, int *mode, COORD *size, PALETA *paletas) /*Inicia o programa*/
 {
 	COORD janela_pixels;
 	check_name(argv, argc);
@@ -26,8 +26,9 @@ void starts(char *argv[], int argc, COORD *orig_window, COORD *initial, COORD *f
 	janela_pixels = pixels_janela();	/*Dimensão da janela de console atual em pixels*/
 	area_reserv(janela_pixels, initial, final);	/*Desenha Areas reservadas*/
 	(*size) = tamanhoJanelaConsole();
-	pos_pencil(pencil_pos, initial, final, 0);
+	pos_pencil(pencil_pos, initial, final, 0, pencil_size);
 	info_lower(size, pencil_pos, initial, pencil_size, mode);
+	info_top(paletas);
 }
 
 void end(COORD orig_window) /*Encerra o programa*/
@@ -41,7 +42,7 @@ void end(COORD orig_window) /*Encerra o programa*/
 	clrscr();
 }
 
-void mode_status(COORD *size, COORD *pencil_pos, COORD *initial, int *pencil_size, int *mode)
+void mode_status(COORD *size, COORD *pencil_pos, COORD *initial, int *pencil_size, int *mode) /*Altera o status pintar e nao pintar*/
 {
 	if(*mode == 1)
 	{

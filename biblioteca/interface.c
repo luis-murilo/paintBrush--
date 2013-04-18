@@ -74,5 +74,6 @@ void work_area(COORD janela_pixels, COORD *initial, COORD *final)	/*Desenha áre
 	rect(initial, final, cor);
 	final->X = janela_pixels.X - 1;
 	final->Y = (janela_pixels.Y) - 33;
+	printf("%d %d", janela_pixels.X, janela_pixels.Y);
 }
 

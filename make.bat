@@ -8,11 +8,12 @@ gcc -c conio_v3.2.3.c
 gcc -c paint.c  -Wall -pedantic
 gcc -c window.c -Wall -pedantic
 gcc -c interface.c -Wall -pedantic
-gcc -c info_lower_bar.c -Wall -pedantic
+gcc -c info_bar.c -Wall -pedantic
 gcc -c pencil.c -Wall -pedantic
 gcc -c draw.c -Wall -pedantic
+gcc -c info_top_bar.c -Wall -pedantic
 
-ar rvs libpaint.a console_v1.5.3.o graphics.o conio_v3.2.3.o paint.o window.o interface.o info_lower_bar.o pencil.o draw.o
+ar rvs libpaint.a console_v1.5.3.o graphics.o conio_v3.2.3.o paint.o window.o interface.o info_bar.o pencil.o draw.o info_top_bar.o
 
 cd ..
 

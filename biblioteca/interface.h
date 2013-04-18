@@ -7,6 +7,7 @@
 #endif
 
 #include <windows.h>
+#include <stdio.h>
 #include "console_v1.5.3.h"
 
 void rect(COORD *initial, COORD *final, COLORREF cor);

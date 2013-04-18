@@ -1,4 +1,4 @@
-#include "info_lower_bar.h"
+#include "info_bar.h"
 
 void info_lower(COORD *size, COORD *pencil_pos, COORD *initial, int *pencil_size, int *mode)
 {
@@ -14,5 +14,12 @@ void info_lower(COORD *size, COORD *pencil_pos, COORD *initial, int *pencil_size
 	{
 		printf("Tamanho do pincel: %d | Modo: Nao pintar | Posicao do cursor: %dx%dpx          ", (*pencil_size), pencil_pos->X, ((pencil_pos->Y) -  initial->Y));
 	}
+}
+
+void info_top(PALETA *paletas)
+{
+	paleta(paletas);
+	icon_save();
+	icon_file();
 }
 
