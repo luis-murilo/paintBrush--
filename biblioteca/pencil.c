@@ -1,51 +1,53 @@
 #include "pencil.h"
+#include "info_bar.h"
+#include "draw.h"
 
-void pos_pencil(COORD *pencil_pos, COORD *initial, COORD *final, int key, int *pencil_size)	/*Atualiza posicao do pincel*/
+void inic_pincel(INFO_PINCEL *pincel, COORD *initial, COORD *final)
 {
-	if(key == 0)	/*Inicializa as coordenadas do pincel*/
+	pincel->pos.X = ((final->X - initial->X) / 2);
+	pincel->pos.Y = ((final->Y - initial->Y) / 2);
+	pincel->size = 1;
+	pincel->mode = 0;
+	pincel->cor = RGB(0, 0, 0);
+}
+
+void pos_pencil(INFO_PINCEL *pincel, COORD *initial, COORD *final, int key)	/*Atualiza posicao do pincel*/
+{
+	if((key == SETA_PARA_ESQUERDA) && ((pincel->pos.X - pincel->size + 1) > initial->X))
 	{
-		pencil_pos->X = 0;
-		pencil_pos->Y = initial->Y;
+		--pincel->pos.X;
 	}
-	else
+	if((key == SETA_PARA_DIREITA) && ((pincel->pos.X + pincel->size - 2) < (final->X - pincel->size)))
 	{
-		if((key == SETA_PARA_ESQUERDA) && ((pencil_pos->X - *pencil_size + 1) > initial->X))
-		{
-			pencil_pos->X -= (*pencil_size);
-		}
-		if((key == SETA_PARA_DIREITA) && ((pencil_pos->X + *pencil_size - 2) < (final->X - *pencil_size)))
-		{
-			pencil_pos->X += (*pencil_size);
-		}
-		if((key == SETA_PARA_CIMA) && ((pencil_pos->Y - *pencil_size + 1) > initial->Y))
-		{
-			pencil_pos->Y -= (*pencil_size);
-		}
-		if((key == SETA_PARA_BAIXO) && (pencil_pos->Y + *pencil_size - 2 < (final->Y - *pencil_size)))
-		{
-			pencil_pos->Y += (*pencil_size);
-		}
+		++pincel->pos.X;
+	}
+	if((key == SETA_PARA_CIMA) && ((pincel->pos.Y - pincel->size + 1) > initial->Y))
+	{
+		--pincel->pos.Y;
+	}
+	if((key == SETA_PARA_BAIXO) && (pincel->pos.Y + pincel->size - 2 < (final->Y - pincel->size)))
+	{
+		++pincel->pos.Y;
 	}
 }
 
-void resize_pencil(int *pencil_size, int state, COORD *size, COORD *pencil_pos, COORD *initial, int *mode)
+void resize_pencil(INFO_PINCEL *pincel, int state, COORD *size, COORD *initial)
 {
 	if(state == 1)
 	{
-		++(*pencil_size);
+		++(pincel->size);
 	}
-	if((state == 0) && (*pencil_size) > 1)
+	if((state == 0) && (pincel->size) > 1)
 	{
-		--(*pencil_size);
+		--(pincel->size);
 	}
-	info_lower(size, pencil_pos, initial, pencil_size, mode);
+	info_lower(size, pincel, initial);
 }
 
-void seta(COORD *pencil_pos, COORD *initial, COORD *final, int key, COORD *size, int *mode, int *pencil_size, PIXEL **pixels)
+void seta(INFO_PINCEL *pincel, COORD *initial, COORD *final, int key, COORD *size, PIXEL **pixels)
 {
-	pintar(pixels, pencil_pos, mode, RGB(0,0,0), key, pencil_size);
-	pos_pencil(pencil_pos, initial, final, key, pencil_size);
-	pintar(pixels, pencil_pos, mode, RGB(0,0,0), key, pencil_size);
-	info_lower(size, pencil_pos, initial, pencil_size, mode);
+	pos_pencil(pincel, initial, final, key);
+	pintar(pincel, pixels, initial, final);
+	info_lower(size, pincel, initial);
 }
 

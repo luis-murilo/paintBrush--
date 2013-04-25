@@ -14,7 +14,7 @@ void start_window()	/*Modifica  a tela ao iniciar o programa*/
 	setDimensaoJanela(size.X, size.Y);
 	setPosicaoJanela(0, 0);	/*Posiciona a janela para cobrir a tela*/
 	setTituloConsole("pbrush++");
-	setEstadoBarraTarefas(INVISIVEL);
+	setEstadoBarraTarefas(VISIVEL);
 }
 
 void end_window(COORD size)	/*Modifica a tela ao encerrar o programa*/

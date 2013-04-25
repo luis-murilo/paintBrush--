@@ -53,12 +53,12 @@ void lower_bar(COORD janela_pixels)	/*Desenha a barra inferior e sua borda*/
 	/*Desenha a barra inferior*/
 	cor = RGB(192, 192, 192);
 	initial.X = 0;
-	initial.Y = (janela_pixels.Y) - 30;
+	initial.Y = (janela_pixels.Y) - 27;
 	rect(&initial, &janela_pixels, cor);
 	/*Desenha a borda inferior*/
 	cor = RGB(150, 150, 150);
-	initial.Y = (janela_pixels.Y) - 32;
-	janela_pixels.Y = (janela_pixels.Y) - 30;
+	initial.Y = (janela_pixels.Y) - 29;
+	janela_pixels.Y = (janela_pixels.Y) - 27;
 	rect(&initial, &janela_pixels, cor);
 }
 
@@ -70,10 +70,9 @@ void work_area(COORD janela_pixels, COORD *initial, COORD *final)	/*Desenha áre
 	initial->X = 0;
 	initial->Y = ((janela_pixels.Y) / 8) + 2;
 	final->X = janela_pixels.X;
-	final->Y = (janela_pixels.Y) - 32;
+	final->Y = (janela_pixels.Y) - 29;
 	rect(initial, final, cor);
 	final->X = janela_pixels.X - 1;
-	final->Y = (janela_pixels.Y) - 33;
-	printf("%d %d", janela_pixels.X, janela_pixels.Y);
+	final->Y = (janela_pixels.Y) - 30;
 }
 

@@ -3,12 +3,24 @@
 
 #include <windows.h>
 #include "console_v1.5.3.h"
-#include "info_bar.h"
-#include "draw.h"
 
-void pos_pencil(COORD *pencil_pos, COORD *initial, COORD *final, int key, int *pencil_size);
-void resize_pencil(int *pencil_size, int state, COORD *size, COORD *pencil_pos, COORD *initial, int *mode);
-void seta(COORD *pencil_pos, COORD *initial, COORD *final, int key, COORD *size, int *mode, int *pencil_size, PIXEL **pixels);
+typedef struct{
+	int status;
+	COLORREF cor;
+}PIXEL;
+
+typedef struct INFO_PINCEL
+{
+	COORD pos;
+	int mode;
+	int size;
+	COLORREF cor;
+} INFO_PINCEL;
+
+void inic_pincel(INFO_PINCEL *pincel, COORD *initial, COORD *final);
+void pos_pencil(INFO_PINCEL *pincel, COORD *initial, COORD *final, int key);
+void resize_pencil(INFO_PINCEL *pincel, int state, COORD *size, COORD *initial);
+void seta(INFO_PINCEL *pincel, COORD *initial, COORD *final, int key, COORD *size, PIXEL **pixels);
 
 #endif
 
